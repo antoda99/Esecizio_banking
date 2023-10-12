@@ -12,11 +12,13 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class TransazioneService {
 
-    private final RestTemplate restTemplate;
-    @Value("${fabrick.api.baseUrl}")
-    private final String fabrickBaseUrl;
     @Value("${fabrick.api.key}")
-    private final String fabrickApiKey;
+    private String fabrickApiKey;
+
+    @Value("${fabrick.api.baseUrl}")
+    private String fabrickBaseUrl;
+
+    private final RestTemplate restTemplate;
 
     @Autowired
     public TransazioneService(RestTemplate restTemplate, String fabrickBaseUrl, String fabrickApiKey) {

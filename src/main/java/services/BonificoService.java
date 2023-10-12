@@ -13,17 +13,16 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class BonificoService {
 
-    private final RestTemplate restTemplate;
-    private final String fabrickBaseUrl;
-    private final String fabrickApiKey;
+    @Value("${fabrick.api.key}")
+    private String fabrickApiKey;
 
-    @Autowired
-    public BonificoService(RestTemplate restTemplate,
-                           @Value("${fabrick.api.baseUrl}") String fabrickBaseUrl,
-                           @Value("${fabrick.api.key}") String fabrickApiKey) {
+    @Value("${fabrick.api.baseUrl}")
+    private String fabrickBaseUrl;
+
+    private final RestTemplate restTemplate;
+
+    public BonificoService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
-        this.fabrickBaseUrl = fabrickBaseUrl;
-        this.fabrickApiKey = fabrickApiKey;
     }
 
     public ResponseEntity<?> effettuaBonifico(BonificoRequest bonificoRequest) {

@@ -1,5 +1,5 @@
 fabrick:
   api:
     key: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
+    baseUrl: https://sandbox.platfr.io
   accountId: 145377
-  baseUrl: https://sandbox.platfr.io

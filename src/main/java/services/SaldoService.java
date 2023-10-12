@@ -14,11 +14,8 @@ public class SaldoService {
     @Value("${fabrick.api.key}")
     private String fabrickApiKey;
 
-    @Value("${fabrick.api.key}")
+    @Value("${fabrick.api.baseUrl}")
     private String fabrickBaseUrl;
-
-    @Value("${fabrick.api.key}")
-    private String fabrickApiPathSaldo;
 
     private final RestTemplate restTemplate;
 
