@@ -25,7 +25,7 @@ public class SaldoService {
 
     public ResponseEntity<?> getSaldo(Long accountId) {
 
-        String apiUrl = fabrickBaseUrl + "/saldo/getSaldo";
+        String apiUrl = fabrickBaseUrl + "/saldo/getSaldo?accountId=" + accountId;
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Auth-Schema", "S2S");
