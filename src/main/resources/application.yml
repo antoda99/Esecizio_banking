@@ -1,6 +1,5 @@
-server:
-  port: 8080
-
 fabrick:
   api:
     key: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
+  accountId: 145377
+  baseUrl: https://sandbox.platfr.io
