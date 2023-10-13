@@ -29,9 +29,11 @@ public class TransazioneService {
 
     public ResponseEntity<?> getTransazioni(Long accountId, String fromAccountingDate, String toAccountingDate) {
 
-        String apiUrl = fabrickBaseUrl + "/transazioni/getTransazioni?accountId=" + accountId
-                + "&fromAccountingDate=" + fromAccountingDate
-                + "&toAccountingDate=" + toAccountingDate;
+        String apiUrl = fabrickBaseUrl + "/api/gbs/banking/v4.0/accounts/" + accountId + "/transactions";
+
+        String queryString = "?fromAccountingDate=" + fromAccountingDate + "&toAccountingDate=" + toAccountingDate;
+
+        apiUrl += queryString;
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Auth-Schema", "S2S");
@@ -48,4 +50,18 @@ public class TransazioneService {
 
         return response;
     }
+
+    /*
+    public List<Transazione> getListTransazioni(Long accountId, String fromAccountingDate, String toAccountingDate){
+
+        la query nella repo tirerebbe fuori direttamente le transazioni nel range temporale fromAccountingDate --> toAccountingDate
+        List<Transazione> listaTransazioni = transazioniRepository.getListTransazioniByAccountId(accountId, fromAccountingDate, toAccountingDate);
+
+        if (listaTransazioni.isEmpty()) {
+            throw new IllegalStateException("Nessuna transazione trovata nel range di tempo inserito");
+        }
+
+        return listaTransazioni;
+    }
+     */
 }

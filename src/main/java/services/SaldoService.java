@@ -25,7 +25,7 @@ public class SaldoService {
 
     public ResponseEntity<?> getSaldo(Long accountId) {
 
-        String apiUrl = fabrickBaseUrl + "/saldo/getSaldo?accountId=" + accountId;
+        String apiUrl = fabrickBaseUrl + "/api/gbs/banking/v4.0/accounts/" + accountId + "/balance";
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Auth-Schema", "S2S");
@@ -42,4 +42,16 @@ public class SaldoService {
 
         return response;
     }
+
+    /*
+
+    altrimenti, direttamente getSaldoByAccountId nella repository, in modo da passare al frontend il campo richiesto tramite hateos
+
+    public Long getSaldo(Long accountId){
+
+        Long saldo = contoRepository.getSaldoByAccountId(accountId);
+
+        return saldo;
+    }
+     */
 }

@@ -26,7 +26,7 @@ public class BonificoService {
 
     public ResponseEntity<?> effettuaBonifico(BonificoRequest bonificoRequest) {
 
-        String apiUrl = fabrickBaseUrl + "/bonifico/eseguiBonifico";
+        String apiUrl = fabrickBaseUrl + "/api/gbs/banking/v4.0/accounts/" + bonificoRequest.getAccountId() + "/payments/money-transfers";
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Auth-Schema", "S2S");
@@ -43,4 +43,19 @@ public class BonificoService {
 
         return response;
     }
+
+    /*
+    public void eseguiBonifico(Long accountId, String receiverName, String description, String currency, String amount, String executionDate){
+
+        Double amountValue = Double.parseDouble(amount);
+         if (amountValue < 0) {
+            throw new IllegalArgumentException("L'importo non può essere negativo");
+        }
+
+        Bonifico bonifico = new Bonifico(accountId, receiverName, description, currency, Double.parseDouble(amount), date);
+
+        bonificoRepository.salvaBonifico(bonifico);
+
+    }
+     */
 }
