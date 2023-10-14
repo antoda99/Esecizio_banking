@@ -45,17 +45,19 @@ public class BonificoService {
     }
 
     /*
-    public void eseguiBonifico(Long accountId, String receiverName, String description, String currency, String amount, String executionDate){
 
-        Double amountValue = Double.parseDouble(amount);
-         if (amountValue < 0) {
-            throw new IllegalArgumentException("L'importo non può essere negativo");
-        }
+    public void eseguiBonifico(BonificoRequest bonificoRequest) {
 
-        Bonifico bonifico = new Bonifico(accountId, receiverName, description, currency, Double.parseDouble(amount), date);
+        String amount = bonificoRequest.getAmount();
+            if (amount.startsWith("-")) {
+                throw new IllegalArgumentException("L'importo non può essere negativo");
+            }
 
-        bonificoRepository.salvaBonifico(bonifico);
+        Bonifico bonifico = new Bonifico(bonificoRequest.getAccountId(), bonificoRequest.getReceiverName(), bonificoRequest.getDescription(), bonificoRequest.getCurrency(), Double.parseDouble(amount), bonificoRequest.getExecutionDate());
+
+        bonificoRepository.save(bonifico);
 
     }
+
      */
 }
